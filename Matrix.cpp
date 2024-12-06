@@ -5,6 +5,14 @@
 using namespace std;
 
 //Matrix constructor
+void verifyEqualDimension(Matrix& m1 , Matrix& m2){ //throws runtime error if dimension MisMatched
+	if(m1.getRows() != m2.getRows() || m1.getColumns() != m2.getColumns()){
+		string error = "MisMatched Dimensions for Matrix " + to_string(m1.getRows()) + "x" + to_string(m1.getColumns()) + " and " + to_string(m2.getRows()) + "x" + to_string(m2.getColumns());
+		throw std::runtime_error(error);
+		exit(1);
+	}
+}
+
 Matrix::Matrix(int rows , int columns){
 	this->rows = rows;
 	this->columns = columns;
@@ -44,6 +52,7 @@ int Matrix::get(int row , int col) { //returns the refrence to the elements poin
 
 //overload the + operator to perform addition
 Matrix Matrix::operator+(Matrix& matrix2){
+	verifyEqualDimension(matrix2 , *this);
 	Matrix resultMatrix(matrix2.getRows(),matrix2.getColumns());
 	for(int i = 1 ; i <= matrix2.getRows() ; i++){
 		for(int j = 1 ; j <= matrix2.getColumns() ; j++){
@@ -53,21 +62,17 @@ Matrix Matrix::operator+(Matrix& matrix2){
 	return resultMatrix;
 }
 
-void Matrix::operator=(Matrix& matrix){
+Matrix& Matrix::operator=(Matrix& matrix){
 	if(this == &matrix){
-		return; //handle self assigment by returining without changing anything
+		return *this; //handle self assigment by returining without changing anything
 	}
-
-	if(this->getRows() != matrix.getRows() || this->getColumns() != matrix.getColumns()){
-		cout << "to  be implemeneted exeption\n";
-		exit(1);
-	}
-
+	verifyEqualDimension(*this , matrix);
 	for(int i = 1 ; i <= matrix.getRows() ; i++){
 		for(int j = 1 ; j <= matrix.getColumns() ; j++){
 			this->at(i,j) = matrix.at(i,j);
 		}
 	}
+	return *this;
 }
 int Matrix::getRows(){
 	return this->rows;

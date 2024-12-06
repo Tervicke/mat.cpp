@@ -16,7 +16,7 @@ class Matrix{
 		void print() const;
 		int& at(int row , int column);
 		Matrix operator+(Matrix& matrix2);
-		void operator=(Matrix& matrix);
+		Matrix& operator=(Matrix& matrix);
 		int getRows();
 		int getColumns();
 };
