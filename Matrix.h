@@ -17,4 +17,6 @@ class Matrix{
 		int& at(int row , int column);
 		Matrix operator+(Matrix& matrix2);
 		void operator=(Matrix& matrix);
+		int getRows();
+		int getColumns();
 };

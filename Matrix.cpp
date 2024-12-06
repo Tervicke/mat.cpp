@@ -44,9 +44,9 @@ int Matrix::get(int row , int col) { //returns the refrence to the elements poin
 
 //overload the + operator to perform addition
 Matrix Matrix::operator+(Matrix& matrix2){
-	Matrix resultMatrix(matrix2.rows,matrix2.columns);
-	for(int i = 1 ; i <= matrix2.rows ; i++){
-		for(int j = 1 ; j <= matrix2.columns ; j++){
+	Matrix resultMatrix(matrix2.getRows(),matrix2.getColumns());
+	for(int i = 1 ; i <= matrix2.getRows() ; i++){
+		for(int j = 1 ; j <= matrix2.getColumns() ; j++){
 			resultMatrix.at(i,j) = this->at(i,j) + matrix2.at(i,j);
 		}
 	}
@@ -58,14 +58,20 @@ void Matrix::operator=(Matrix& matrix){
 		return; //handle self assigment by returining without changing anything
 	}
 
-	if(this->rows != matrix.rows || this->columns != matrix.columns){
+	if(this->getRows() != matrix.getRows() || this->getColumns() != matrix.getColumns()){
 		cout << "to  be implemeneted exeption\n";
 		exit(1);
 	}
 
-	for(int i = 1 ; i <= matrix.rows ; i++){
-		for(int j = 1 ; j <= matrix.columns ; j++){
+	for(int i = 1 ; i <= matrix.getRows() ; i++){
+		for(int j = 1 ; j <= matrix.getColumns() ; j++){
 			this->at(i,j) = matrix.at(i,j);
 		}
 	}
+}
+int Matrix::getRows(){
+	return this->rows;
+}
+int Matrix::getColumns(){
+	return this->columns;
 }
