@@ -14,7 +14,7 @@ class Matrix{
 		Matrix(int rows , int columns);
 		int get(int row , int column);
 		void print() const;
-		void set(int row , int column , int value);
+		int& at(int row , int column);
 		Matrix operator+(Matrix& matrix2);
 		void operator=(Matrix& matrix);
 };

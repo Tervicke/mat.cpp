@@ -21,9 +21,9 @@ void Matrix::check_index(int& row , int& col){
 }
 
 //set the matrix variable
-void Matrix::set(int row , int col , int value){
-	this->check_index(row,col);
-	elements[row][col] = value;
+int& Matrix::at(int row , int col){
+	check_index(row,col);
+	return this->elements[row][col];
 }
 
 //print the matrix on the console
@@ -37,7 +37,7 @@ void Matrix::print() const {
 }
 
 //get the value at a particular row and col
-int Matrix::get(int row , int col) { //returns only a copy of the int without the refrence so the only way to change is it to use .set 
+int Matrix::get(int row , int col) { //returns the refrence to the elements pointer to change it  
 	this->check_index(row,col);
 	return elements[row][col];
 }	
@@ -59,7 +59,7 @@ void Matrix::operator=(Matrix& matrix){
 
 	for(int i = 1 ; i <= matrix.rows ; i++){
 		for(int j = 1 ; j <= matrix.columns ; j++){
-			this->set(i,j,matrix.get(i,j));
+			this->at(i,j) = matrix.at(i,j);
 		}
 	}
 }
