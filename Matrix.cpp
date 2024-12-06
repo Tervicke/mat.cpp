@@ -11,9 +11,9 @@ Matrix::Matrix(int rows , int columns){
 	this->elements = vector<vector<int>>(rows,vector<int>(columns,0)); // Matrix set to NULL matrix by default
 }
 
-//check the index
-void Matrix::check_index(int& row , int& col){
-	if(row < 1 || rows < row){
+//verify the given index
+void Matrix::verifyIndex(int& row , int& col){
+	if(row > this->getRows() || col > this->getColumns()){
 		throw out_of_range("The Index " + to_string(row) + "is out of bounds of range for the matrix with " + to_string(this->rows));
 	}	
 	//decrease by 1 to ensure the next function uses them correctly
@@ -22,7 +22,7 @@ void Matrix::check_index(int& row , int& col){
 
 //set the matrix variable
 int& Matrix::at(int row , int col){
-	check_index(row,col);
+	verifyIndex(row,col);
 	return this->elements[row][col];
 }
 
@@ -38,7 +38,7 @@ void Matrix::print() const {
 
 //get the value at a particular row and col
 int Matrix::get(int row , int col) { //returns the refrence to the elements pointer to change it  
-	this->check_index(row,col);
+	this->verifyIndex(row,col);
 	return elements[row][col];
 }	
 

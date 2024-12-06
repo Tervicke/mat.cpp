@@ -9,7 +9,7 @@ class Matrix{
 		int rows;
 		int columns;
 		vector<vector<int>> elements;
-		void check_index(int& row , int& column);
+		void verifyIndex(int& row , int& column);
 	public:
 		Matrix(int rows , int columns);
 		int get(int row , int column);
