@@ -15,8 +15,11 @@ class Matrix{
 		int get(int row , int column);
 		void print() const;
 		int& at(int row , int column);
+
 		Matrix operator+(Matrix& matrix2);
+		Matrix operator-(Matrix& matrix);
 		Matrix& operator=(Matrix& matrix);
+
 		int getRows();
 		int getColumns();
 };

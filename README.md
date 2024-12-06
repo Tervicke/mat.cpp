@@ -7,7 +7,7 @@
 - [x] Implement matrix creation (e.g., from an array or zeros)
 - [x] Implement matrix printing (output in a readable format)
 - [x] Implement matrix addition (element-wise)
-- [ ] Implement matrix subtraction (element-wise)
+- [x] Implement matrix subtraction (element-wise)
 - [ ] Implement matrix scalar multiplication (multiply each element by a constant)
 - [ ] Implement matrix scalar division (divide each element by a constant)
 - [ ] Implement matrix transposition (swap rows and columns)
