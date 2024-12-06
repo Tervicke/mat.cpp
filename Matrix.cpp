@@ -44,7 +44,13 @@ int Matrix::get(int row , int col) { //returns the refrence to the elements poin
 
 //overload the + operator to perform addition
 Matrix Matrix::operator+(Matrix& matrix2){
-	return matrix2; // to be updated method
+	Matrix resultMatrix(matrix2.rows,matrix2.columns);
+	for(int i = 1 ; i <= matrix2.rows ; i++){
+		for(int j = 1 ; j <= matrix2.columns ; j++){
+			resultMatrix.at(i,j) = this->at(i,j) + matrix2.at(i,j);
+		}
+	}
+	return resultMatrix;
 }
 
 void Matrix::operator=(Matrix& matrix){
