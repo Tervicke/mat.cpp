@@ -3,6 +3,7 @@
 #include<iostream>
 #include<vector>
 #include<stdexcept>
+
 using namespace std;
 class Matrix{
 	private:
@@ -23,3 +24,7 @@ class Matrix{
 		int getRows();
 		int getColumns();
 };
+
+
+//util function def
+void verifyEqualDimension(Matrix& m1 , Matrix& m2);

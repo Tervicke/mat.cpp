@@ -4,7 +4,6 @@
 #include"Matrix.h"
 using namespace std;
 
-//Matrix constructor
 void verifyEqualDimension(Matrix& m1 , Matrix& m2){ //throws runtime error if dimension MisMatched
 	if(m1.getRows() != m2.getRows() || m1.getColumns() != m2.getColumns()){
 		string error = "MisMatched Dimensions for Matrix " + to_string(m1.getRows()) + "x" + to_string(m1.getColumns()) + " and " + to_string(m2.getRows()) + "x" + to_string(m2.getColumns());
@@ -49,42 +48,6 @@ int Matrix::get(int row , int col) { //returns the refrence to the elements poin
 	this->verifyIndex(row,col);
 	return elements[row][col];
 }	
-
-//overload the + operator to perform addition
-Matrix Matrix::operator+(Matrix& matrix2){
-	verifyEqualDimension(matrix2 , *this);
-	Matrix resultMatrix(matrix2.getRows(),matrix2.getColumns());
-	for(int i = 1 ; i <= matrix2.getRows() ; i++){
-		for(int j = 1 ; j <= matrix2.getColumns() ; j++){
-			resultMatrix.at(i,j) = this->at(i,j) + matrix2.at(i,j);
-		}
-	}
-	return resultMatrix;
-}
-
-Matrix Matrix::operator-(Matrix& matrix2){
-	verifyEqualDimension(matrix2 , *this);
-	Matrix resultMatrix(matrix2.getRows(),matrix2.getColumns());
-	for(int i = 1 ; i <= matrix2.getRows() ; i++){
-		for(int j = 1 ; j <= matrix2.getColumns() ; j++){
-			resultMatrix.at(i,j) = this->at(i,j) - matrix2.at(i,j);
-		}
-	}
-	return resultMatrix;
-}
-
-Matrix& Matrix::operator=(Matrix& matrix){
-	if(this == &matrix){
-		return *this; //handle self assigment by returining without changing anything
-	}
-	verifyEqualDimension(*this , matrix);
-	for(int i = 1 ; i <= matrix.getRows() ; i++){
-		for(int j = 1 ; j <= matrix.getColumns() ; j++){
-			this->at(i,j) = matrix.at(i,j);
-		}
-	}
-	return *this;
-}
 
 int Matrix::getRows(){
 	return this->rows;
