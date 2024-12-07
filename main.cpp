@@ -17,7 +17,7 @@ int main(){
 	m2.at(2,1) = 13;
 	m2.at(2,2) = 13;
 	
-	Matrix m3 = 10 * m2;
+	Matrix m3 =  m2 / 13;
 	m3.print();
 	return 0;
 }

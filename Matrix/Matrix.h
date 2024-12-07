@@ -23,6 +23,8 @@ class Matrix{
 		Matrix operator*(int scaler);
 		friend Matrix operator*(int scaler ,Matrix& matrix);
 
+		Matrix operator/(int scaler);
+		friend Matrix operator/(int scaler ,Matrix& matrix);
 		int getRows();
 		int getColumns();
 };
