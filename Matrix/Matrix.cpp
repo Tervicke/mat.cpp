@@ -55,3 +55,19 @@ int Matrix::getRows(){
 int Matrix::getColumns(){
 	return this->columns;
 }
+
+//matrix transpose , turn the matrix into a transpose
+void Matrix::transpose(){
+	int new_rows = this->getColumns();
+	int new_columns = this->getRows();
+	std::vector<vector<int>> new_elements(new_rows,vector<int>(new_columns));
+	//loop from zero to maintain the new_elements
+	for(int i = 0 ; i < this->getRows() ; i++){
+		for(int j = 0 ; j < this->getColumns() ; j++){
+			new_elements[j][i] = this->at(i+1,j+1);
+		}
+	}
+	this->elements = new_elements;
+	this->rows = new_rows;
+	this->columns = new_columns;
+}
