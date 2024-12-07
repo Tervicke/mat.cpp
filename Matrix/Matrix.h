@@ -25,6 +25,9 @@ class Matrix{
 
 		Matrix operator/(int scaler);
 		friend Matrix operator/(int scaler ,Matrix& matrix);
+
+		bool  operator==(Matrix& matrix);
+
 		int getRows();
 		int getColumns();
 };
