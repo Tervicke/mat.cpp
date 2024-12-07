@@ -20,6 +20,8 @@ class Matrix{
 		Matrix operator+(Matrix& matrix2);
 		Matrix operator-(Matrix& matrix);
 		Matrix& operator=(Matrix& matrix);
+		Matrix operator*(int scaler);
+		friend Matrix operator*(int scaler ,Matrix& matrix);
 
 		int getRows();
 		int getColumns();

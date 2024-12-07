@@ -34,3 +34,19 @@ Matrix& Matrix::operator=(Matrix& matrix){
 	}
 	return *this;
 }
+
+//scaler multiply matrix * scaler 
+Matrix Matrix::operator*(int scaler){
+	Matrix resultMatrix(this->getRows(),this->getColumns());
+	for(int i = 1 ; i <= this->getRows() ; i++){
+		for(int j = 1 ; j <= this->getColumns() ; j++){
+			resultMatrix.at(i,j) = this->at(i,j) * scaler;
+		}
+	}
+	return resultMatrix;
+}
+
+//friend function to implement scaler * matrix
+Matrix operator*(int scaler , Matrix& matrix){
+	return (matrix * scaler);
+}
