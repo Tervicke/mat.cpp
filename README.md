@@ -11,7 +11,7 @@
 - [x] Implement matrix scalar multiplication (multiply each element by a constant)
 - [x] Implement matrix scalar division (divide each element by a constant)
 - [ ] Implement matrix transposition (swap rows and columns)
-- [ ] Implement matrix equality check (compare if two matrices are equal)
+- [x] Implement matrix equality check (compare if two matrices are equal)
 - [ ] Implement matrix resizing (expand or shrink the matrix)
 - [ ] Implement matrix determinant calculation (for small square matrices, e.g., 2x2 and 3x3)
 
