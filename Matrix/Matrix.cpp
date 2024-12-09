@@ -71,3 +71,10 @@ void Matrix::transpose(){
 	this->rows = new_rows;
 	this->columns = new_columns;
 }
+
+void verifySquareMatrix(Matrix& m){
+	if(m.getRows() != m.getColumns()){
+		string error = "Not a Square Matrix of " + to_string(m.getRows()) + "x" + to_string(m.getColumns());
+		throw std::runtime_error(error);
+	}
+}

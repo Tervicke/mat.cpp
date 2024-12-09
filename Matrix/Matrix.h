@@ -27,11 +27,15 @@ class Matrix{
 		friend Matrix operator/(int scaler ,Matrix& matrix);
 
 		bool  operator==(Matrix& matrix);
-
+		
 		int getRows();
 		int getColumns();
+
+		void transpose();
+
 };
 
 
 //util function def
 void verifyEqualDimension(Matrix& m1 , Matrix& m2);
+void verifySquareMatrix(Matrix& m1);
