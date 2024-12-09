@@ -4,14 +4,6 @@
 #include"Matrix.h"
 using namespace std;
 
-void verifyEqualDimension(Matrix& m1 , Matrix& m2){ //throws runtime error if dimension MisMatched
-	if(m1.getRows() != m2.getRows() || m1.getColumns() != m2.getColumns()){
-		string error = "MisMatched Dimensions for Matrix " + to_string(m1.getRows()) + "x" + to_string(m1.getColumns()) + " and " + to_string(m2.getRows()) + "x" + to_string(m2.getColumns());
-		throw std::runtime_error(error);
-		exit(1);
-	}
-}
-
 Matrix::Matrix(int rows , int columns){
 	this->rows = rows;
 	this->columns = columns;
@@ -72,9 +64,3 @@ void Matrix::transpose(){
 	this->columns = new_columns;
 }
 
-void verifySquareMatrix(Matrix& m){
-	if(m.getRows() != m.getColumns()){
-		string error = "Not a Square Matrix of " + to_string(m.getRows()) + "x" + to_string(m.getColumns());
-		throw std::runtime_error(error);
-	}
-}

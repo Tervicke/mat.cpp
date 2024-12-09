@@ -36,6 +36,7 @@ class Matrix{
 };
 
 
-//util function def
+//util function def MatrixUtils.cpp
 void verifyEqualDimension(Matrix& m1 , Matrix& m2);
 void verifySquareMatrix(Matrix& m1);
+Matrix getMinorMatrix(Matrix& m , int row , int col);
