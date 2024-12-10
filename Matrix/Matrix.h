@@ -32,11 +32,12 @@ class Matrix{
 		int getColumns();
 
 		void transpose();
-
+		int determinant();
 };
 
 
 //util function def MatrixUtils.cpp
 void verifyEqualDimension(Matrix& m1 , Matrix& m2);
 void verifySquareMatrix(Matrix& m1);
-Matrix getMinorMatrix(Matrix& m , int row , int col);
+Matrix& getMinorMatrix(Matrix& m , int row , int col);
+int getDeterminant(int size , Matrix& m);

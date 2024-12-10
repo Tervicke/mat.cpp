@@ -1,6 +1,6 @@
 #include<stdexcept>
+#include<math.h>
 #include"Matrix.h"
-
 //verify the square matrix for determinant calculation mostly
 void verifySquareMatrix(Matrix& m){
 	if(m.getRows() != m.getColumns()){
@@ -17,24 +17,38 @@ void verifyEqualDimension(Matrix& m1 , Matrix& m2){ //throws runtime error if di
 		exit(1);
 	}
 }
-
 //get the minor matrix by removing the row and column
-Matrix getMinorMatrix(Matrix& m , int row , int col){
-	verifySquareMatrix(m);
-	Matrix minormatrix(m.getRows() - 1 , m.getColumns() -1);
+void setMinorMatrix(Matrix& m , int row , int col , Matrix& minorMatrix){
+	//verifySquareMatrix(m);
 	int row_index = 1;
 	int col_index = 1;
-	cout << "kfjal" << endl;
 	for(int i = 1 ; i <= m.getRows() ; i++){
 		if(row == i){ continue; } //skip the row 
 		col_index = 1;
 		for(int j = 1 ; j <= m.getColumns() ; j++){
 			if(col == j){continue;} // skip the column
-			minormatrix.at(row_index,col_index) = m.at(i,j);
+			minorMatrix.at(row_index,col_index) = m.at(i,j);
 			col_index++;
 		}
 		row_index++;
 	}
-	return minormatrix;
 }
+//wraper function over the Matrix::determinant();
+int getDeterminant(int size , Matrix& m){
+	int determinant = 0;
+	Matrix minorMatrix(m.getRows() - 1 , m.getColumns() - 1);
+	int sign = 1; //changes the sign after every iteration of the loop alternative to pow(1,i-1);
+	if(size > 2){
+		size--;
+		for(int i = 1 ; i <= m.getRows() ; i++){
+			setMinorMatrix(m,1,i,minorMatrix); //sets the minorMatrix to the minor matrix 
+			determinant += sign * (m.at(i,i) * getDeterminant(size , minorMatrix) );
+			sign *= -1;
+		}
+	}else{
+    determinant = m.at(1,1) * m.at(2,2) - m.at(1,2) * m.at(2,1);
+	}
+	return determinant;
+}
+
 

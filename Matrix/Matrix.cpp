@@ -63,4 +63,9 @@ void Matrix::transpose(){
 	this->rows = new_rows;
 	this->columns = new_columns;
 }
+//wrapper for the internal getdeterminant method
+int Matrix::determinant(){
+	verifySquareMatrix(*this); // verify if square matrix
+	return getDeterminant(this->getRows() , *this );
+}
 
