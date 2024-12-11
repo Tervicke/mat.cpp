@@ -51,4 +51,10 @@ int getDeterminant(int size , Matrix& m){
 	return determinant;
 }
 
-
+Matrix createIdentityMatrix(int n){
+	Matrix identityMatrix(n,n);
+	for(int i = 1 ; i <= n ; i++){
+		identityMatrix.at(i,i) = 1;
+	}
+	return identityMatrix;
+}

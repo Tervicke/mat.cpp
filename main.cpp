@@ -43,6 +43,8 @@ int main(){
 		m3.print();
     //cout << "Determinant of 4x4 matrix: " << m3.determinant() << endl;  // Should be 0
 		
+		Matrix m4 = createIdentityMatrix(3);
+		m4.print();
 
     return 0;
 }

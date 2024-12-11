@@ -34,6 +34,7 @@ class Matrix{
 		void transpose();
 		int determinant();
 		void resize(int row , int col);
+
 };
 
 
@@ -42,3 +43,4 @@ void verifyEqualDimension(Matrix& m1 , Matrix& m2);
 void verifySquareMatrix(Matrix& m1);
 Matrix& getMinorMatrix(Matrix& m , int row , int col);
 int getDeterminant(int size , Matrix& m);
+Matrix createIdentityMatrix(int n);
