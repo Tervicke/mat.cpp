@@ -69,3 +69,11 @@ int Matrix::determinant(){
 	return getDeterminant(this->getRows() , *this );
 }
 
+void Matrix::resize(int row , int col){
+	this->rows = row; 
+	this->columns = col;
+	this->elements.resize(row,vector<int>(col,0));
+	for(auto& v : this->elements){
+		v.resize(col,0);
+	}
+}

@@ -27,24 +27,22 @@ int main(){
     cout << "Determinant of 3x3 matrix: " << m2.determinant() << endl;  // Should be 12
 
     // 4x4 Matrix
-    Matrix m3(4, 4);
+    Matrix m3(3, 3);
     m3.at(1, 1) = 1;
     m3.at(1, 2) = 2;
     m3.at(1, 3) = 3;
-    m3.at(1, 4) = 4;
+    //m3.at(1, 4) = 4;
     m3.at(2, 1) = 5;
     m3.at(2, 2) = 6;
     m3.at(2, 3) = 7;
-    m3.at(2, 4) = 8;
+    //m3.at(2, 4) = 8;
     m3.at(3, 1) = 9;
     m3.at(3, 2) = 10;
     m3.at(3, 3) = 11;
-    m3.at(3, 4) = 12;
-    m3.at(4, 1) = 13;
-    m3.at(4, 2) = 14;
-    m3.at(4, 3) = 15;
-    m3.at(4, 4) = 16;
-    cout << "Determinant of 4x4 matrix: " << m3.determinant() << endl;  // Should be 0
+		m3.resize(4,4);
+		m3.print();
+    //cout << "Determinant of 4x4 matrix: " << m3.determinant() << endl;  // Should be 0
+		
 
     return 0;
 }

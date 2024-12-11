@@ -33,6 +33,7 @@ class Matrix{
 
 		void transpose();
 		int determinant();
+		void resize(int row , int col);
 };
 
 
