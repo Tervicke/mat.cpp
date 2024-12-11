@@ -1,4 +1,4 @@
-# mat.cpp
+# Mat.cpp
 ## A matrix library written in c++ for educational purposes
 
 ## Todo
