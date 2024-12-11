@@ -21,5 +21,5 @@
 - [ ] Implement matrix rank (using Gaussian elimination or similar techniques)
 - [ ] Implement matrix trace (sum of diagonal elements)
 - [ ] Implement matrix diagonalization (for certain square matrices)
-- [ ] Implement matrix identity creation (returning an identity matrix of size n)
+- [x] Implement matrix identity creation (returning an identity matrix of size n)
 - [ ] Implement matrix row and column operations (e.g., swapping rows/columns, scaling rows/columns)
