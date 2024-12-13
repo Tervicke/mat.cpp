@@ -101,3 +101,22 @@ void Matrix::swapRows(int row1, int row2){
 	this->elements[row1] = this->elements[row2];
 	this->elements[row2] = temp;
 }
+void Matrix::swapColumns(int col1 , int col2){
+	//verify the col1
+	if(col1 <= 0 || col1 > this->getColumns() ){ 
+		string error = "Not a valid column" + to_string(col1) + "for the Matrix with columns" + to_string(this->getColumns());
+		throw runtime_error(error);
+	}
+	//verify the col2 
+	if(col2 <= 0 || col2> this->getColumns() ){ 
+		string error = "Not a valid column" + to_string(col2) + "for the Matrix with columns" + to_string(this->getColumns());
+		throw runtime_error(error);
+	}
+	col1--;
+	col2--;
+	for(int i =0 ;i < this->getRows() ; i++){
+		double temp = this->elements[i][col1];
+		this->elements[i][col1] = this->elements[i][col2];
+		this->elements[i][col2] = temp;
+	}
+}

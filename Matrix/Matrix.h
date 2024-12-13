@@ -36,6 +36,7 @@ class Matrix{
 		void resize(int row , int col);
 
 		void swapRows(int row1, int row2);
+		void swapColumns(int col1 , int col2);
 };
 
 
