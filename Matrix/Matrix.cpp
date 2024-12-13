@@ -83,3 +83,21 @@ void Matrix::resize(int row , int col){
 		v.resize(col,0);
 	}
 }
+
+void Matrix::swapRows(int row1, int row2){
+	//verify the row1
+	if(row1 <= 0 || row1 > this->getRows() ){ 
+		string error = "Not a valid row " + to_string(row1) + "for the Matrix with rows " + to_string(this->getRows());
+		throw runtime_error(error);
+	}
+	//verify the row2
+	if(row2 <= 0 || row2 > this->getRows() ){ 
+		string error = "Not a valid row " + to_string(row1) + "for the Matrix with rows " + to_string(this->getRows());
+		throw runtime_error(error);
+	}
+	row1--;
+	row2--;
+	vector<double> temp = this->elements[row1];
+	this->elements[row1] = this->elements[row2];
+	this->elements[row2] = temp;
+}

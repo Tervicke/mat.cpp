@@ -16,7 +16,8 @@ int main(){
     m3.at(3, 1) = 9.9;
     m3.at(3, 2) = 10.10;
     m3.at(3, 3) = 11.11;
-//		m3.scaler(0.25);
+		m3.print();
+		m3.swapRows(1,3);
 		m3.print();
 
     return 0;

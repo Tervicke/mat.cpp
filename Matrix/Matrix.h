@@ -35,6 +35,7 @@ class Matrix{
 		double determinant();
 		void resize(int row , int col);
 
+		void swapRows(int row1, int row2);
 };
 
 
