@@ -7,7 +7,7 @@ using namespace std;
 Matrix::Matrix(int rows , int columns){
 	this->rows = rows;
 	this->columns = columns;
-	this->elements = vector<vector<int>>(rows,vector<int>(columns,0)); // Matrix set to NULL matrix by default
+	this->elements = vector<vector<double>>(rows,vector<double>(columns,0.0)); // Matrix set to NULL matrix by default
 }
 
 //verify the given index
@@ -20,19 +20,25 @@ void Matrix::verifyIndex(int& row , int& col){
 }
 
 //set the matrix variable
-int& Matrix::at(int row , int col){
+double& Matrix::at(int row , int col){
 	verifyIndex(row,col);
 	return this->elements[row][col];
 }
 
 //print the matrix on the console
-void Matrix::print() const {
-	for(auto& v : elements){
-		for(auto& e: v){
-			cout << e << " ";
-		}
-		cout << endl;
-	}
+void Matrix::print() {
+    cout << "{" << endl; // Start the matrix
+    for (size_t i = 0; i < elements.size(); ++i) {
+        cout << "  { ";
+        for (size_t j = 0; j < elements[i].size(); ++j) {
+            cout << elements[i][j];
+            if (j < elements[i].size() - 1) cout << ", "; // Add a comma between elements
+        }
+        cout << " }";
+        if (i < elements.size() - 1) cout << ","; // Add a comma between rows
+        cout << endl;
+    }
+    cout << "}" << endl; // End the matrix
 }
 
 //get the value at a particular row and col
@@ -52,7 +58,7 @@ int Matrix::getColumns(){
 void Matrix::transpose(){
 	int new_rows = this->getColumns();
 	int new_columns = this->getRows();
-	std::vector<vector<int>> new_elements(new_rows,vector<int>(new_columns));
+	std::vector<vector<double>> new_elements(new_rows,vector<double>(new_columns));
 	//loop from zero to maintain the new_elements
 	for(int i = 0 ; i < this->getRows() ; i++){
 		for(int j = 0 ; j < this->getColumns() ; j++){
@@ -64,7 +70,7 @@ void Matrix::transpose(){
 	this->columns = new_columns;
 }
 //wrapper for the internal getdeterminant method
-int Matrix::determinant(){
+double Matrix::determinant(){
 	verifySquareMatrix(*this); // verify if square matrix
 	return getDeterminant(this->getRows() , *this );
 }
@@ -72,7 +78,7 @@ int Matrix::determinant(){
 void Matrix::resize(int row , int col){
 	this->rows = row; 
 	this->columns = col;
-	this->elements.resize(row,vector<int>(col,0));
+	this->elements.resize(row,vector<double>(col,0));
 	for(auto& v : this->elements){
 		v.resize(col,0);
 	}

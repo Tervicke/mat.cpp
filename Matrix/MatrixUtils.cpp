@@ -34,7 +34,7 @@ void setMinorMatrix(Matrix& m , int row , int col , Matrix& minorMatrix){
 	}
 }
 //wraper function over the Matrix::determinant();
-int getDeterminant(int size , Matrix& m){
+double getDeterminant(int size , Matrix& m){
 	int determinant = 0;
 	Matrix minorMatrix(m.getRows() - 1 , m.getColumns() - 1);
 	int sign = 1; //changes the sign after every iteration of the loop alternative to pow(1,i-1);
