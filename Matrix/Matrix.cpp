@@ -29,12 +29,12 @@ double& Matrix::at(int row , int col){
 void Matrix::print() {
     cout << "{" << endl; // Start the matrix
     for (size_t i = 0; i < elements.size(); ++i) {
-        cout << "  { ";
+        cout << "  [ ";
         for (size_t j = 0; j < elements[i].size(); ++j) {
             cout << elements[i][j];
-            if (j < elements[i].size() - 1) cout << ", "; // Add a comma between elements
+            if (j < elements[i].size() - 1) cout << " , "; // Add a comma between elements
         }
-        cout << " }";
+        cout << " ]";
         if (i < elements.size() - 1) cout << ","; // Add a comma between rows
         cout << endl;
     }
