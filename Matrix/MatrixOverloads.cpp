@@ -69,3 +69,24 @@ bool Matrix::operator==(Matrix& matrix2){
 	}
 	return true;
 }
+Matrix Matrix::operator*(Matrix& m2){
+	if(this->getColumns() != m2.getRows()){
+		throw runtime_error("Invalid Matrix multiplication");
+	}
+	int rows = this->getRows();
+	int cols = m2.getColumns();
+	Matrix result(rows , cols);
+	int ans;	 // to calculate the ans at each position 
+	
+	//looping through the result matrix to set every element
+	for(int i = 1 ; i <= rows ; i++ ){
+		for(int j = 1 ; j <= cols ; j++){
+			ans = 0;
+			for(int k = 1 ; k <= m2.getRows() ; k++){ // using either m2.getRows()  or this->getColumns() will work since they are equal....
+				ans += this->at(i,k) * m2.at(k,j);
+			}
+			result.at(i,j) = ans; 
+		}
+	}
+	return result;
+}

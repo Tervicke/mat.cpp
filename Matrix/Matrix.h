@@ -19,6 +19,7 @@ class Matrix{
 
 		Matrix operator+(Matrix& matrix2);
 		Matrix operator-(Matrix& matrix);
+		Matrix operator*(Matrix& m2); // matrix multiply
 		Matrix operator*(double scaler);
 		friend Matrix operator*(double scaler ,Matrix& matrix);
 
