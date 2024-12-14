@@ -22,20 +22,6 @@ Matrix Matrix::operator-(Matrix& matrix2){
 	return resultMatrix;
 }
 
-Matrix& Matrix::operator=(Matrix& matrix){
-	if(this == &matrix){
-		return *this; //handle self assigment by returining without changing anything
-	}
-	verifyEqualDimension(*this , matrix);
-	for(int i = 1 ; i <= matrix.getRows() ; i++){
-		for(int j = 1 ; j <= matrix.getColumns() ; j++){
-			this->at(i,j) = matrix.at(i,j);
-		}
-	}
-	return *this;
-}
-
-
 //scaler multiply matrix * scaler 
 Matrix Matrix::operator*(double scaler){
 	Matrix resultMatrix(this->getRows(),this->getColumns());
