@@ -22,4 +22,4 @@
 - [ ] Implement matrix trace (sum of diagonal elements)
 - [ ] Implement matrix diagonalization (for certain square matrices)
 - [x] Implement matrix identity creation (returning an identity matrix of size n)
-- [ ] Implement matrix row and column operations (e.g., swapping rows/columns, scaling rows/columns)
+- [x] Implement matrix row and column operations (e.g., swapping rows/columns, scaling rows/columns)
