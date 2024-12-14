@@ -16,7 +16,7 @@
 - [x] Implement matrix determinant calculation (for small square matrices, e.g., 2x2 and 3x3)
 
 ### Intermediate Operations:
-- [ ] Implement matrix multiplication (standard matrix product)
+- [x] Implement matrix multiplication (standard matrix product)
 - [ ] Implement matrix inversion (for invertible square matrices)
 - [ ] Implement matrix rank (using Gaussian elimination or similar techniques)
 - [ ] Implement matrix trace (sum of diagonal elements)
