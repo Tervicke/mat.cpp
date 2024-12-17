@@ -147,3 +147,12 @@ void Matrix::invert(){
 	resultMatrix = resultMatrix / det;
 	*this = resultMatrix; // set the original matrix to the new result matrix
 }
+//computes trace of the matrix
+double Matrix::trace(){
+	verifySquareMatrix(*this);
+	double trace = 0.0;
+	for(int i = 1; i <= this->getRows() ; i++){
+		trace += this->at(i,i);
+	}
+	return trace;
+}

@@ -42,7 +42,7 @@ double getDeterminant(int size , Matrix& m){
 		size--;
 		for(int i = 1 ; i <= m.getRows() ; i++){
 			setMinorMatrix(m,1,i,minorMatrix); //sets the minorMatrix to the minor matrix 
-			determinant += sign * (m.at(i,i) * getDeterminant(size , minorMatrix) );
+			determinant += sign * (m.at(1,i) * getDeterminant(size , minorMatrix) );
 			sign *= -1;
 		}
 	}else{
@@ -57,4 +57,23 @@ Matrix createIdentityMatrix(int n){
 		identityMatrix.at(i,i) = 1;
 	}
 	return identityMatrix;
+}
+void convertToREF(Matrix& m){
+	//only changes 1 row
+	m.print();
+	for(int k = 1 ; k <= m.getColumns(); k++){
+		
+		//for one column only
+		for(int i = 1 ; i <= m.getRows()-1 ; i++){
+			double pivot = (m.at(i+1,k) == 0) ? 0 : m.at(k,k) / m.at(i+1,k);	
+			cout << "pivot " << m.at(k,k) << " / " << m.at(i+1,k) << " " << pivot << endl;
+			if(pivot != 0){
+				for(int j = 1 ; j <= m.getColumns() ; j++){ 
+					m.at(i+1,j) = m.at(i+1,j) * pivot - m.at(k,j);
+				}
+			}
+			m.print();
+		}
+	}
+
 }

@@ -13,8 +13,10 @@ int main(){
 		m.at(3,2) = 5;
 		m.at(3,1) = 1;
 		m.at(2,3) = 2;
+		m.at(2,2) = 5;
+		m.at(3,3) = 10;
 		m.print();
-		m.invert();
-		m.print();
+		int trace = m.trace();
+		cout << trace << endl;
     return 0;
 }
