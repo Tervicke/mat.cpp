@@ -120,3 +120,30 @@ void Matrix::swapColumns(int col1 , int col2){
 		this->elements[i][col2] = temp;
 	}
 }
+void Matrix::invert(){
+	verifySquareMatrix(*this);
+	int det = this->determinant();
+
+	if(det == 0) {
+		string error = "Cannot invert a singular Matrix (determinant = 0)";
+		throw runtime_error(error);
+	}
+	int rows = this->getRows();
+	int cols = this->getRows();
+	double cofactor;
+	double sign;
+	Matrix minorMatrix(rows - 1 , cols - 1);	 // make a temp minor matrix to use the set minor matrix
+	Matrix resultMatrix(rows , cols);
+
+	for(int i = 1 ; i <= rows ; i++){
+		for(int j = 1 ; j <= cols ; j++){
+			setMinorMatrix(*this,i,j,minorMatrix);
+			sign = ((i+j) % 2 == 0) ? 1 : -1;
+			cofactor = sign * minorMatrix.determinant();
+			resultMatrix.at(j,i) = cofactor; //find the cofactor and set it on the interchanged row col form;
+		}
+	}
+	cout << det << endl;
+	resultMatrix = resultMatrix / det;
+	*this = resultMatrix; // set the original matrix to the new result matrix
+}

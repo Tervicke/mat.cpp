@@ -10,9 +10,11 @@ int main(){
 		m.at(1,1) = 1;
 		m.at(1,2) = 2;
 		m.at(2,1) = 3;
-		m.at(3,2) = 12;
-		m.at(3,1) = 8;
+		m.at(3,2) = 5;
+		m.at(3,1) = 1;
 		m.at(2,3) = 2;
+		m.print();
+		m.invert();
 		m.print();
     return 0;
 }

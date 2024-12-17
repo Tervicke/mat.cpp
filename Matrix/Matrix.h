@@ -37,12 +37,13 @@ class Matrix{
 
 		void swapRows(int row1, int row2);
 		void swapColumns(int col1 , int col2);
+		void invert();
 };
-
 
 //util function def MatrixUtils.cpp
 void verifyEqualDimension(Matrix& m1 , Matrix& m2);
 void verifySquareMatrix(Matrix& m1);
-Matrix& getMinorMatrix(Matrix& m , int row , int col);
+void setMinorMatrix(Matrix& m , int row , int col , Matrix& minorMatrix);
 double getDeterminant(int size , Matrix& m);
 Matrix createIdentityMatrix(int n);
+void convertToREF(Matrix& m); // convert to row row echelon form  //to be implemented
