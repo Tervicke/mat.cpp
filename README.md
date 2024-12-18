@@ -18,7 +18,7 @@
 ### Intermediate Operations:
 - [x] Implement matrix multiplication (standard matrix product)
 - [x] Implement matrix inversion (for invertible square matrices)
-- [ ] Implement matrix rank (using Gaussian elimination or similar techniques)
+- [x] Implement matrix rank (using Gaussian elimination or similar techniques)
 - [x] Implement matrix trace (sum of diagonal elements)
 - [ ] Implement matrix diagonalization (for certain square matrices)
 - [x] Implement matrix identity creation (returning an identity matrix of size n)
