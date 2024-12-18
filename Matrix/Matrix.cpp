@@ -156,3 +156,25 @@ double Matrix::trace(){
 	}
 	return trace;
 }
+//gets the rank of the matrix
+int Matrix::rank(){ 
+	int rows = this->getRows();
+	int cols = this->getColumns();
+	Matrix copyMatrix = *this;
+	reduceToREF(copyMatrix);
+	int rank = rows;
+	for(int i = rows ; i > 0; i--){ //loop through the matrix from the bottom and end termination when atleast once non_zero row found
+		bool zeroRow = true;
+		for(int j = 1 ; j <= cols ; j++){
+			if(copyMatrix.at(i,j) != 0){
+				zeroRow = false;
+				break;
+			}
+		}
+		if(zeroRow == false){
+			break; // no more rows to check 
+		}
+		rank--;
+	}
+	return rank;
+}

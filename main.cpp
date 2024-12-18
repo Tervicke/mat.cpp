@@ -19,7 +19,7 @@ int main() {
 		m1.at(3,2) = -3;
 		m1.at(3,3) = 9;
     m1.print();
-    reduceToREF(m1);
+		cout <m1.rank();
     m1.print();
     cout << endl;
     return 0;

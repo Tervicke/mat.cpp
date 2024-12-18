@@ -39,6 +39,8 @@ class Matrix{
 		void swapColumns(int col1 , int col2);
 		void invert();
 		double trace();
+
+		int rank();
 };
 
 //util function def MatrixUtils.cpp
