@@ -47,4 +47,4 @@ void verifySquareMatrix(Matrix& m1);
 void setMinorMatrix(Matrix& m , int row , int col , Matrix& minorMatrix);
 double getDeterminant(int size , Matrix& m);
 Matrix createIdentityMatrix(int n);
-void convertToREF(Matrix& m); // convert to row row echelon form  //to be implemented
+void reduceToREF(Matrix& m); // reduce to row row echelon form  //to be implemented

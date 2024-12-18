@@ -58,22 +58,34 @@ Matrix createIdentityMatrix(int n){
 	}
 	return identityMatrix;
 }
-void convertToREF(Matrix& m){
-	//only changes 1 row
-	m.print();
-	for(int k = 1 ; k <= m.getColumns(); k++){
-		
-		//for one column only
-		for(int i = 1 ; i <= m.getRows()-1 ; i++){
-			double pivot = (m.at(i+1,k) == 0) ? 0 : m.at(k,k) / m.at(i+1,k);	
-			cout << "pivot " << m.at(k,k) << " / " << m.at(i+1,k) << " " << pivot << endl;
-			if(pivot != 0){
-				for(int j = 1 ; j <= m.getColumns() ; j++){ 
-					m.at(i+1,j) = m.at(i+1,j) * pivot - m.at(k,j);
+void reduceToREF(Matrix& m){
+	int rows = m.getRows();
+	int cols = m.getColumns();
+
+	for(int k = 1 ; k <= std::min(rows,cols) ; k++){
+		double pivot = m.at(k,k);
+		//if pivot is 0 try to swap rows to make it non zero;
+		if(pivot == 0){
+
+			for(int i = k + 1 ; i <= rows ; i++){
+				if(m.at(i,k) != 0 ){ // check for potential pivots
+					m.swapRows(k,i);
+					break;
 				}
 			}
-			m.print();
+
 		}
+		pivot = m.at(k,k); // update the pivot to ensure the new (swapped row pivot is being used)
+		if(pivot == 0){ continue; } // pivot is 0 and no rows can be swapped
+		//if non zero pivot ensured then
+
+		for(int i = k + 1 ; i <= rows ; i++){
+			double pivot = m.at(i,k)  / m.at(k,k) ; //the pivot that is divided by the the next col
+			for(int j = k ; j <= cols ; j++){
+				m.at(i,j) -= m.at(k,j) * pivot;
+			}
+		}
+
 	}
 
 }
