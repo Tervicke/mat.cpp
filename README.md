@@ -1,3 +1,4 @@
+
 # Mat.cpp
 ## A matrix library written in c++ for educational purposes
 
@@ -23,3 +24,4 @@
 - [ ] Implement matrix diagonalization (for certain square matrices)
 - [x] Implement matrix identity creation (returning an identity matrix of size n)
 - [x] Implement matrix row and column operations (e.g., swapping rows/columns, scaling rows/columns)
+- [ ] Implement Matrix eigen values (for smaller square matrix such as 2 , 3, 4)
