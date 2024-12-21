@@ -89,3 +89,14 @@ void reduceToREF(Matrix& m){
 	}
 
 }
+//returns true if the matrix is diagonal else returns false
+bool verifyDiagonalMatrix(Matrix m){
+	for(int i = 1 ; i <= m.getRows(); i++){
+		for(int j = 1 ; j <= m.getColumns() ; j++){
+			if(m.at(i,j) != 0 && i != j){
+				return false;
+			}
+		}
+	}
+	return true;
+}
