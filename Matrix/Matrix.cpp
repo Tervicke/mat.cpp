@@ -178,3 +178,31 @@ int Matrix::rank(){
 	}
 	return rank;
 }
+void Matrix::set(vector<vector<double>> elements) {
+		string error;
+    if (elements.empty()) {
+        error = "Matrix cannot be empty";
+        throw runtime_error(error);
+    }
+
+    this->rows = elements.size();
+    this->columns = elements[0].size();
+
+    // Check if all rows have the same number of columns
+    for (const auto& row : elements) {
+        if (row.size() != this->columns) {
+            error = "Inconsistent row sizes in matrix";
+            throw runtime_error(error);
+        }
+    }
+
+    // Check for non-zero dimensions
+    if (this->rows == 0 || this->columns == 0) {
+        error = "Matrix dimensions must be non-zero";
+        throw runtime_error(error);
+    }
+
+		this->rows = elements.size();
+		this->columns = elements[0].size();
+    this->elements = elements;
+}

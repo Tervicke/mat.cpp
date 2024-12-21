@@ -41,6 +41,7 @@ class Matrix{
 		double trace();
 
 		int rank();
+		void set(vector<vector<double>> elements); //auto resets the the size to fit the vector
 };
 
 //util function def MatrixUtils.cpp
