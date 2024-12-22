@@ -42,6 +42,7 @@ class Matrix{
 
 		int rank();
 		void set(vector<vector<double>> elements); //auto resets the the size to fit the vector
+		vector<double> getCol(int col);
 };
 
 //util function def MatrixUtils.cpp

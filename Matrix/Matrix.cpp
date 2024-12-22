@@ -206,3 +206,14 @@ void Matrix::set(vector<vector<double>> elements) {
 		this->columns = elements[0].size();
     this->elements = elements;
 }
+vector<double> Matrix::getCol(int col){
+	if(col >= this->getColumns() || col <= 0){
+		string error = "Not a valid column";
+		throw runtime_error(error);
+	}
+	vector<double> res;
+	for(int i = 1 ; i <= this->getColumns() ; i++){
+		res.push_back(this->at(i,col));
+	}
+	return res;
+}

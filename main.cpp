@@ -14,6 +14,10 @@ int main() {
 		m1.at(3,3) = 0;
     m1.print();
 		cout << getNormOfCol(m1,1) << endl;
+		auto ans = m1.getCol(1);
+		for(auto c : ans){
+			cout << c << endl;
+		}
     return 0;
 }
 
