@@ -107,3 +107,15 @@ bool verifyDiagonalMatrix(Matrix m){
 	}
 	return true;
 }
+//get the norm / magnitude of a particular column 
+double getNormOfCol(Matrix m,int col){
+	if(col <= 0 || col > m.getColumns()){
+		string error = "Not a valid column";
+		throw runtime_error(error);
+	}
+	int ans = 0; // calculate the sum;
+	for(int i = 1 ;  i <= m.getRows();i++){
+		ans+= m.at(i,col) * m.at(i,col); // square and sum
+	}
+	return sqrt(ans);
+}

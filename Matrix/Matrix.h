@@ -52,3 +52,4 @@ double getDeterminant(int size , Matrix& m);
 Matrix createIdentityMatrix(int n);
 void reduceToREF(Matrix& m); 
 bool verifyDiagonalMatrix(Matrix m);
+double getNormOfCol(Matrix m, int col);

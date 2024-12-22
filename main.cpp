@@ -13,11 +13,7 @@ int main() {
 		m1.at(2,2) = 1;
 		m1.at(3,3) = 0;
     m1.print();
-		vector<vector<double>> elements  = {{1,0,0} , {0,2,0} , {0,0,1}};
-		m1.set(elements);
-		cout << verifyDiagonalMatrix(m1) << endl;
-		m1.print();
-		cout << verifyDiagonalMatrix(m1) << endl;
+		cout << getNormOfCol(m1,1) << endl;
     return 0;
 }
 
