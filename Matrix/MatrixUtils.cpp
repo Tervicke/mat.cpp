@@ -107,6 +107,7 @@ bool verifyDiagonalMatrix(Matrix m){
 	}
 	return true;
 }
+
 //get the norm / magnitude of a particular column 
 double getNormOfCol(Matrix m,int col){
 	if(col <= 0 || col > m.getColumns()){
@@ -118,4 +119,114 @@ double getNormOfCol(Matrix m,int col){
 		ans+= m.at(i,col) * m.at(i,col); // square and sum
 	}
 	return sqrt(ans);
+}
+
+
+
+//some utility functions for gramScmidt()
+//------- start 
+void normalise(vector<double>& v){
+	//get the magnitude
+	//update the vector by dividing each element with the magnitude
+	double magnitude = 0;
+	for(double e : v){
+		magnitude += e * e;
+	}
+	magnitude = sqrt(magnitude); //take the square root after adding all the squares
+	for(double& e : v){
+		e = e / magnitude;
+	}
+}
+
+//returns the magnitude / norm of the vector
+double norm(vector<double>& v){
+	double magnitude = 0;
+	for(auto& e : v){
+		magnitude += e * e;
+	}
+	return sqrt(magnitude);
+}
+vector<double> GetProjection(vector<double> u , vector<double> v){
+	//projection of u on v onto u is given by proj = ( (v dot product u ) / (u dot product u) ) * vector u
+	//get the dot product of v and u
+	double dotProductVU = 0;
+	for(int i = 0 ; i < u.size() ; i++){
+		dotProductVU += v[i] * u[i];
+	}
+	//get the dot product of u and u 
+	double dotProductUU = 0; 
+	for(int i = 0 ; i < u.size() ; i++){
+		dotProductUU += u[i] * u[i];
+	}
+	//check if 0
+	if(dotProductUU < 1e-9 ){
+		cout << dotProductUU << endl;
+		throw runtime_error("cannot project unto a zero vector");
+	}
+	//get the scaler and then multiply it to every element in the u vector
+	double scaler = dotProductVU / dotProductUU;
+
+	//scale the u vector
+	vector<double> projection(u.size());
+	for(int i = 0 ; i < u.size() ; i++ ){
+		projection[i] = u[i] * scaler;
+	}
+
+	return projection;
+}
+vector<double> substractVectors(const vector<double>& a, const vector<double>& b) {
+
+    if (a.size() != b.size()) {
+        throw std::invalid_argument("Vectors must be of the same size for subtraction.");
+    }
+
+    vector<double> result(a.size());
+    for (size_t i = 0; i < a.size(); i++) {
+        result[i] = a[i] - b[i];
+    }
+
+    return result;
+}
+
+//------- end
+//
+
+void gramSchmidt(Matrix m , Matrix& result){
+	//resize the result
+	result.resize(m.getRows() , m.getColumns());
+	
+	//here a1,...an is the pure column of the matrix , u1 , un is the projected and updated vector which is normal to each other and q2 is the result col 
+	for(int i = 1 ; i <= m.getColumns() ; i++){
+		
+		//directly insert the first column by just normalising it
+		vector<double> ai = m.getCol(i);
+		if(i == 1){ 
+			normalise(ai);
+			result.setCol( i , ai );
+			continue;
+		}
+		
+		//update the a2 to obtain u2 
+		//first substract the projection of q1 in a2 and then get a2 and then calculate it again
+
+		vector<double> updated_column = ai;
+
+		for(int j = 1 ; j < i ; j++){ //substract all the projection of previous vectors 
+			vector<double> projection = GetProjection(result.getCol(j) , updated_column);
+			updated_column = substractVectors(updated_column, projection);
+		}
+
+		normalise(updated_column);
+		for(int i = 0 ; i < updated_column.size() ; i++){
+			cout << updated_column[i] << " ";
+		}
+		cout << endl;
+		cout << norm(updated_column) << endl;
+		if(updated_column.empty() || norm(updated_column) <1e-9 ){
+			throw std::runtime_error("Gram-Schmidt failed: Dependent or zero column detected.");
+		}
+
+		result.setCol(i,updated_column);
+	}
+
 }

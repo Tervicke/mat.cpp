@@ -207,7 +207,7 @@ void Matrix::set(vector<vector<double>> elements) {
     this->elements = elements;
 }
 vector<double> Matrix::getCol(int col){
-	if(col >= this->getColumns() || col <= 0){
+	if(col > this->getColumns() || col <= 0){
 		string error = "Not a valid column";
 		throw runtime_error(error);
 	}
@@ -218,7 +218,7 @@ vector<double> Matrix::getCol(int col){
 	return res;
 }
 void Matrix::setCol(int col , vector<double> colvec){
-	if(col >= this->getColumns() || col <= 0){
+	if(col > this->getColumns() || col <= 0){
 		string error = "Not a valid column";
 		throw runtime_error(error);
 	}
