@@ -212,8 +212,21 @@ vector<double> Matrix::getCol(int col){
 		throw runtime_error(error);
 	}
 	vector<double> res;
-	for(int i = 1 ; i <= this->getColumns() ; i++){
+	for(int i = 1 ; i <= this->getRows() ; i++){
 		res.push_back(this->at(i,col));
 	}
 	return res;
+}
+void Matrix::setCol(int col , vector<double> colvec){
+	if(col >= this->getColumns() || col <= 0){
+		string error = "Not a valid column";
+		throw runtime_error(error);
+	}
+	if(colvec.size() != this->getRows() ){
+		string error = "vector size is unequal to the matrix size";
+		throw runtime_error(error);
+	}
+	for(int i = 1 ; i <= this->getRows() ; i++){
+		this->at(i,col) = colvec[i-1];
+	}
 }
