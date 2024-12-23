@@ -217,11 +217,6 @@ void gramSchmidt(Matrix m , Matrix& result){
 		}
 
 		normalise(updated_column);
-		for(int i = 0 ; i < updated_column.size() ; i++){
-			cout << updated_column[i] << " ";
-		}
-		cout << endl;
-		cout << norm(updated_column) << endl;
 		if(updated_column.empty() || norm(updated_column) <1e-9 ){
 			throw std::runtime_error("Gram-Schmidt failed: Dependent or zero column detected.");
 		}

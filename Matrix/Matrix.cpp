@@ -230,3 +230,47 @@ void Matrix::setCol(int col , vector<double> colvec){
 		this->at(i,col) = colvec[i-1];
 	}
 }
+//gets the eigen values by using gram Schmidt
+vector<double> Matrix::getEigenValues(){
+
+	vector<double> EigenValues;
+	const int maxIterations = 1000;
+	const double tolerance = 1e-9;
+	Matrix Ak = *this;
+	Matrix Q(Ak.getRows(), Ak.getColumns()); //get by gram Schmidt
+	Matrix R(Ak.getColumns(),Ak.getColumns());
+	Matrix QT(Ak.getRows(),Ak.getColumns());
+
+	for(int iter = 0 ; iter < maxIterations ; iter++){
+		gramSchmidt(Ak , Q);
+
+		QT = Q;
+		QT.transpose();
+		
+		R = QT * Ak; 
+
+		Ak = R * Q;
+		bool converged = true; //to check if we have got the vector
+
+		for(int i = 1 ; i <= Ak.getRows() ; i++){
+			for(int j = 1 ; j <= Ak.getColumns() ; j++){
+				if(i != j && abs(Ak.at(i,j)) > tolerance){
+					converged = false;
+					break;
+				}
+			}
+			if(!converged){
+				break;
+			}
+		}
+		if(converged){
+			break;
+		}
+	}
+
+	for(int i = 1 ; i <= Ak.getRows() ; i++){
+		EigenValues.push_back(Ak.at(i,i));
+	}
+
+	return EigenValues;
+}

@@ -76,7 +76,7 @@ Matrix Matrix::operator*(Matrix& m2){
 	int rows = this->getRows();
 	int cols = m2.getColumns();
 	Matrix result(rows , cols);
-	int ans;	 // to calculate the ans at each position 
+	double ans;	 // to calculate the ans at each position 
 	
 	//looping through the result matrix to set every element
 	for(int i = 1 ; i <= rows ; i++ ){

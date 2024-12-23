@@ -44,6 +44,7 @@ class Matrix{
 		void set(vector<vector<double>> elements); //auto resets the the size to fit the vector
 		vector<double> getCol(int col);
 		void setCol(int col , vector<double> colvec);
+		vector<double> getEigenValues();
 };
 
 //util function def MatrixUtils.cpp
